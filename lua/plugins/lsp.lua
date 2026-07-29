@@ -141,7 +141,6 @@ return {
 
     local servers = {
       ts_ls = {},
-      gopls = {},
       -- jdtls itself needs Java 21+ to run, but sdkman's `current` is 17,
       -- so run it on the newest JDK and compile projects against 17.
       jdtls = {
@@ -154,7 +153,6 @@ return {
           },
         },
       },
-      rust_analyzer = {},
       bashls = {},
       marksman = {},
       ruff = {},

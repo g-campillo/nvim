@@ -13,7 +13,7 @@
 
 help:
 	@echo "make install   install all deps: neovim, brew, FiraCode Nerd Font, ripgrep,"
-	@echo "               node (nvm), python (pyenv), go, java (sdkman: JDK 21 + 17)"
+	@echo "               node (nvm), python (pyenv), java (sdkman: JDK 21 + 17)"
 	@echo "make doctor    verify what's installed"
 
 install:

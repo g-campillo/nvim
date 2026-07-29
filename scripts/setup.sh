@@ -22,9 +22,9 @@ doctor() {
   command -v pyenv >/dev/null 2>&1 && eval "$(pyenv init - bash)"
   [ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && . "$HOME/.sdkman/bin/sdkman-init.sh" 2>/dev/null
   echo "Dependencies:"
-  for t in nvim brew git rg node npm python3 go java; do
+  for t in nvim brew git rg node npm python3 java; do
     if command -v "$t" >/dev/null 2>&1; then
-      if [ "$t" = go ]; then v=$(go version 2>&1); else v=$("$t" --version 2>&1 | head -1); fi
+      v=$("$t" --version 2>&1 | head -1)
       printf '  \342\234\205 %-8s %s\n' "$t" "$v"
     else
       printf '  \342\235\214 %-8s missing\n' "$t"
@@ -94,13 +94,7 @@ if [ -n "$PY_LATEST" ]; then
   pyenv global "$PY_LATEST"
 fi
 
-# --- 7. Go -----------------------------------------------------------------
-# ponytail: no goenv/gvm — Go 1.21+ self-manages toolchains (GOTOOLCHAIN=auto
-# downloads whatever version a project's go.mod asks for). brew keeps Go current.
-log "Go (gopls needs it)"
-brew install go || true
-
-# --- 8. SDKMAN + JDKs ------------------------------------------------------
+# --- 7. SDKMAN + JDKs ------------------------------------------------------
 # The config's jdtls hardcodes ~/.sdkman JDK paths: newest 21+ runs jdtls,
 # 17 is the compile target. Both must physically exist under ~/.sdkman.
 log "SDKMAN + JDK 21 & 17"
